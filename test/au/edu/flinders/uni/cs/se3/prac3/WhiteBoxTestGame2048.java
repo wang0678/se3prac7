@@ -44,6 +44,147 @@ public class WhiteBoxTestGame2048 extends TestCase {
 		assertFalse(gameCore.lose());
 		assertFalse(gameCore.win());
 	}
+	public void test_tilt_board_left(){
+		int[][] partialExpected = null;
+		
+		int[][] mockBoards = {
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0}
+		};
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_left();
+		int[][]after = gameCore.getBoard();
+		assertTrue(GameUtil.compareExpectToActualBoard(mockBoards, after));
+		
+		
+		 mockBoards = new int[][]{
+				{1,0,0,0},
+				{1,0,0,0},
+				{1,0,0,0},
+				{1,0,0,0}
+		};
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_left();
+		after = gameCore.getBoard();
+		assertTrue(GameUtil.compareExpectToActualBoard(mockBoards, after));
+		
+		
+		mockBoards = new int[][]{
+					{1,0,2,0},
+					{1,0,2,0},
+					{1,0,2,0},
+					{1,0,2,0}
+			};
+		 
+		partialExpected= new int[][]{
+				    {1,2,0,0},
+					{1,2,0,0},
+					{1,2,0,0},
+					{1,2,0,0}
+		  };
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_left();
+		after = gameCore.getBoard();
+		assertEquals(partialExpected[0][0],after[0][0]);
+		assertEquals(partialExpected[0][1],after[0][1]);
+		assertEquals(partialExpected[1][0],after[1][0]);
+		assertEquals(partialExpected[1][1],after[1][1]);
+		assertEquals(partialExpected[2][0],after[2][0]);
+		assertEquals(partialExpected[2][1],after[2][1]);
+		assertEquals(partialExpected[3][0],after[3][0]);
+		assertEquals(partialExpected[3][1],after[3][1]);		
+		
+		 int SumOfRest = after[0][2]+after[0][3]
+		              		                + after[1][2]+after[1][3]
+		              		                + after[2][2]+after[2][3]
+		              		                + after[3][2]+after[3][3];
+		 if(SumOfRest==0){
+		  	  fail();
+		 }
+		
+	
+		mockBoards = new int[][]{
+						{1,0,0,2},
+						{1,0,0,2},
+						{1,0,0,2},
+						{1,0,0,2}
+				};
+			 
+		partialExpected= new int[][]{
+					    {1,2,0,0},
+						{1,2,0,0},
+						{1,2,0,0},
+						{1,2,0,0}
+			  };
+		gameCore.setBoard(mockBoards);
+	    gameCore.tilt_board_left();
+		after = gameCore.getBoard();
+		assertEquals(partialExpected[0][0],after[0][0]);
+		assertEquals(partialExpected[0][1],after[0][1]);
+		assertEquals(partialExpected[1][0],after[1][0]);
+		assertEquals(partialExpected[1][1],after[1][1]);
+		assertEquals(partialExpected[2][0],after[2][0]);
+		assertEquals(partialExpected[2][1],after[2][1]);
+		assertEquals(partialExpected[3][0],after[3][0]);
+		assertEquals(partialExpected[3][1],after[3][1]);		
+		
+		 SumOfRest = after[0][2]+after[0][3]
+		              		                + after[1][2]+after[1][3]
+		              		                + after[2][2]+after[2][3]
+		              		                + after[3][2]+after[3][3];
+		 if(SumOfRest==0){
+		  	  fail();
+		 }
+		
+		
+		mockBoards = new int[][]{
+					{1,2,3,4},
+					{1,2,3,4},
+					{1,2,3,4},
+					{1,2,3,4}
+			};
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_left();
+		after = gameCore.getBoard();
+		assertTrue(GameUtil.compareExpectToActualBoard(mockBoards, after));
+			
+			
+		 mockBoards = new int[][]{
+						{1,1,1,1},
+						{1,1,1,1},
+						{1,1,1,1},
+						{1,1,1,1}
+				};
+		  
+		 partialExpected= new int[][]{
+				    {2,2,0,0},
+					{2,2,0,0},
+					{2,2,0,0},
+					{2,2,0,0}
+		  };
+		  gameCore.setBoard(mockBoards);
+		  gameCore.tilt_board_left();
+		  after = gameCore.getBoard();
+		  
+		  assertEquals(partialExpected[0][0],after[0][0]);
+		  assertEquals(partialExpected[0][1],after[0][1]);
+		  assertEquals(partialExpected[1][0],after[1][0]);
+		  assertEquals(partialExpected[1][1],after[1][1]);
+		  assertEquals(partialExpected[2][0],after[2][0]);
+		  assertEquals(partialExpected[2][1],after[2][1]);
+		  assertEquals(partialExpected[3][0],after[3][0]);
+		  assertEquals(partialExpected[3][1],after[3][1]);		
+		  
+		  SumOfRest = after[0][2]+after[0][3]
+		                + after[1][2]+after[1][3]
+		                + after[2][2]+after[2][3]
+		                + after[3][2]+after[3][3];
+		  if(SumOfRest==0){
+			  fail();
+		  }
+	}
 	
     }
 
