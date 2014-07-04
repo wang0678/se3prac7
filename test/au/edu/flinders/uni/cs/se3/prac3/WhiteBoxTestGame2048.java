@@ -185,6 +185,133 @@ public class WhiteBoxTestGame2048 extends TestCase {
 			  fail();
 		  }
 	}
+		public void test_tilt_board_up(){
+		gameCore.resetGame();
+		
+		int[][] mockBoards = {
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0}
+		};
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_up();
+		int[][]after = gameCore.getBoard();
+		assertTrue(GameUtil.compareExpectToActualBoard(mockBoards, after));
+		
+		
+		 mockBoards = new int[][]{
+				{1,1,1,1},
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0}
+		};
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_up();
+		after = gameCore.getBoard();
+		assertTrue(GameUtil.compareExpectToActualBoard(mockBoards, after));
+		
+		
+		mockBoards = new int[][]{
+					{1,1,1,1},
+					{0,0,0,0},
+					{2,2,2,2},
+					{0,0,0,0}
+			};
+		 
+		
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_up();
+		after = gameCore.getBoard();
+		assertEquals(1,after[0][0]);
+		assertEquals(1,after[0][1]);
+		assertEquals(1,after[0][2]);
+		assertEquals(1,after[0][3]);
+		assertEquals(2,after[1][0]);
+		assertEquals(2,after[1][1]);
+		assertEquals(2,after[1][2]);
+		assertEquals(2,after[1][3]);		
+		  
+		int SumOfRest = after[2][0]+after[2][1]
+		                + after[2][2]+after[2][3]
+		                + after[3][0]+after[3][1]
+		                + after[3][2]+after[3][3];
+		if(SumOfRest==0){
+			  fail();
+		}
 	
+		
+		
+		mockBoards = new int[][]{
+						{1,1,1,1},
+						{0,0,0,0},
+						{0,0,0,0},
+						{2,2,2,2}
+				};
+		
+		gameCore.setBoard(mockBoards);
+	    gameCore.tilt_board_up();
+		after = gameCore.getBoard();
+		assertEquals(1,after[0][0]);
+		assertEquals(1,after[0][1]);
+		assertEquals(1,after[0][2]);
+		assertEquals(1,after[0][3]);
+		assertEquals(2,after[1][0]);
+		assertEquals(2,after[1][1]);
+		assertEquals(2,after[1][2]);
+		assertEquals(2,after[1][3]);		
+		  
+		SumOfRest = after[2][0]+after[2][1]
+		          + after[2][2]+after[2][3]
+		          + after[3][0]+after[3][1]
+		          + after[3][2]+after[3][3];
+		
+		if(SumOfRest==0){
+			  fail();
+		}	
+		
+		
+		mockBoards = new int[][]{
+					{1,1,1,1},
+					{2,2,2,2},
+					{3,3,3,3},
+					{4,4,4,4}
+			};
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_up();
+		after = gameCore.getBoard();
+		assertTrue(GameUtil.compareExpectToActualBoard(mockBoards, after));
+			
+			
+		 mockBoards = new int[][]{
+						{1,1,1,1},
+						{1,1,1,1},
+						{1,1,1,1},
+						{1,1,1,1}
+				};
+		  
+		
+		  gameCore.setBoard(mockBoards);
+		  gameCore.tilt_board_up();
+		  after = gameCore.getBoard();
+		  
+		  assertEquals(2,after[0][0]);
+		  assertEquals(2,after[0][1]);
+		  assertEquals(2,after[0][2]);
+		  assertEquals(2,after[0][3]);
+		  assertEquals(2,after[1][0]);
+		  assertEquals(2,after[1][1]);
+		  assertEquals(2,after[1][2]);
+		  assertEquals(2,after[1][3]);		
+		  
+		  SumOfRest = after[2][0]+after[2][1]
+		              + after[2][2]+after[2][3]
+		              + after[3][0]+after[3][1]
+		              + after[3][2]+after[3][3];
+		                 		
+		  if(SumOfRest==0){
+			  fail();
+		  }
+	}
     }
 
