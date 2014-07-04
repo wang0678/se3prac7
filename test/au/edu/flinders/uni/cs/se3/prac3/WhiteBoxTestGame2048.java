@@ -630,5 +630,32 @@ public void test_tilt_board_down(){
     	assertTrue(gameCore.lose());
     	
     }
-}
-}
+     public void test_score(){
+    	
+    	int[][] mockBoards = {
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0}
+		};
+    	gameCore.resetGame();
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_left();
+		assertEquals(0,gameCore.score());
+		
+		 mockBoards = new int[][]{
+				{1,1,1,1},
+				{0,0,0,0},
+				{2,2,2,2},
+				{0,0,0,0}
+		};
+		gameCore.resetGame();
+		gameCore.setBoard(mockBoards);
+		gameCore.tilt_board_left();
+		assertEquals(12,gameCore.score());
+		
+		 
+		  };
+		};
+	
+
