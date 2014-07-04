@@ -672,7 +672,10 @@ public void test_tilt_board_down(){
 					{2,2,2,2},
 					{2,3,3,3}
 		  };
-		  };
-		};
-	
+		 gameCore.resetGame();
+		 gameCore.setBoard(mockBoards);
+		 gameCore.tilt_board_left();
+		 assertEquals(20,gameCore.score());		
 
+}
+     }
