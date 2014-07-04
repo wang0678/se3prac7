@@ -573,5 +573,26 @@ public void test_tilt_board_down(){
     	gameCore.markGameLose();
     	assertFalse(gameCore.win());
     	assertTrue(gameCore.lose());
-    }
+    } public void test_canMove(){
+    	
+    	int[][] mockBoards = {
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0},
+				{0,0,0,0}
+		};
+		gameCore.setBoard(mockBoards);
+		assertTrue(gameCore.canMove());
+    	
+		
+		mockBoards = new int[][]{
+				{0,1,1,0},
+				{0,1,1,0},
+				{0,1,0,0},
+				{0,1,0,0}
+		};
+		gameCore.setBoard(mockBoards);
+		assertTrue(gameCore.canMove());
+    	
+}
 }
