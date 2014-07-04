@@ -1,0 +1,56 @@
+Test Plan for Game2048
+
+This test plan is used to fully test the Game2048 software that developed for Practise 3 and 4.
+
+Test cases
+
+1: Validate Game2048 can display properly with 4*4 grid, initialised with 2 numbers 2 or 4 in a random position.
+    1.1: To check Game2048 display 4 rows and 4 columns.
+	1.2: To check Game2048 display 2 numbers when game starts, e.g (2, 2 or 2, 4) at random positions in the board.
+    
+2: Validate Game2048 can react to all the supported key actions as specified by the specification in practise 3&4.
+    2.1: To press left arrow key to check whether the board tilts all the numbers to the left.
+	2.2: To press right arrow key to check whether the board tilts all the number to the right.
+	2.3: To press up arrow key to check whether the board tilts all the number to the upside.
+    2.4: To press down arrow key to check whether the board tilts all the number to the down side.
+	2.5: To press ESC key to check whether the Game2048 reset to start status.
+    2.6: To press an invalid key to check whether the board reacts nothing or not. 	
+
+3: Validate Game2048 can tilt all numbers to one direction if one particular direction arrow key is pressed.
+    3.1: To press left arrow key to check whether the board tilts all numbers to left side.
+    3.2: To press right arrow key to check whether the board tilts all number to right side.
+    3.3: To press up arrow key to check whether the board tilts all the numbers to upside.
+    3.4: To press down arrow key to check whether the board tilts all the numbers to down side.	
+	3.5: To create a scenario that 4 numbers(no same numbers at two continuous cells) in one line or column stays same when either left/right or up/down key pressed.
+	
+4: Validate Game2048 can merge same number correctly in one direction for one row.
+    4.1: To press one of the arrow key to check one row/column (if there are numbers e.g: 2,2,0,0 in one row/column), it should be 4,0,0,0 after tilt.
+	4.2: To press one of the arrow key to check one row/column (if there are two numbers e.g: 2,4 in one row/column), it should be still keep 2, 4.
+	4.3: To press one of the arrow key to check one row/column (if there are numbers e.g: 2,2,4,0 in one row/column), it should be 4,4,0 after tilt.
+	4.4: To press one of the arrow key to check one row/column (if there are numbers e.g: 2,4,2,4 in one row/column), it should be 2,4,2,4 after tilt.
+	4.5: To press one of the arrow key to check one row/column (if there are numbers e.g: 2,2,2,2 in one row/column), it should be 4,4,0,0 after tilt.
+
+5: Validate Game2048 can tilt/merge numbers correctly in all directions (iterate for left, up, right, down separately)
+    5.1: To press left arrow key to check the board, it should tilt and merge all numbers to left side.
+    5.2: To press right arrow key to check the board, it should tilt and merge all numbers to right side.
+    5.3: To press up arrow key to check the board, it should tilt and merge all numbers to upside.
+    5.4: To press down arrow key to check the board, it should tilt and merge all numbers to downside.
+
+6：Validate Game2048 can add a new number when numbers on the board actually changed (moved or merged).
+    6.1: To press left arrow key to check all number should moved/merged to left side, and a number (2 or 4) should be filled in a random empty cells.
+	6.2: To press right arrow key to check all number should moved/merged to right side, and a number (2 or 4) should be filled in a random empty cells.
+ 	6.3: To press up arrow key to check all number should moved/merged to up side, and a number (2 or 4) should be filled in a random empty cells.
+	6.4: To press down arrow key to check all number should moved/merged to down side, and a number (2 or 4) should be filled in a random empty cells.
+	6.5: To create a scenario that no numbers will be moved/merged to one of the directions. To check no new number should be filled in empty cells.
+	
+7: Validate Game2048 can behave correctly when board filled with numbers.
+    7.1: To create a scenario that the board filled with numbers but still can merge in one direction(e.g. up/down). Game should not be in failure state.
+    7.2: To create the above scenario and press up/down key to check the board should tilt the board to either direction with same number in adjacent cells merged.
+    7.3: To create a scenario that the board filled with numbers but not be able to merge in any of the directions. Press any key, it should report failure game status.
+
+8: Validate Game2048 can calculate score correctly.
+    8.1: To check the score displayed should be the sum of all merged numbers on the board.
+	8.2: To create a scenario that the score can reach 2048, then it should change the game status to success. 
+
+9: Validate Game2048 colour change when	tow numbers merge.
+    9.1: To check each number should be displayed with a different colour.
