@@ -620,6 +620,15 @@ public void test_tilt_board_down(){
 		};
 		gameCore.setBoard(mockBoards);
 		assertFalse(gameCore.canMove());
+		}
     
+    public void  test_lose(){
+    	gameCore.resetGame();
+    	assertFalse(gameCore.lose());
+    	
+    	gameCore.markGameLose();
+    	assertTrue(gameCore.lose());
+    	
+    }
 }
 }
