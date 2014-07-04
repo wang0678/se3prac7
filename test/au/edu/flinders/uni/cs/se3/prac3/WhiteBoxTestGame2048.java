@@ -35,6 +35,15 @@ public class WhiteBoxTestGame2048 extends TestCase {
 			fail();
 		}
 	}
-    	
+    		public void test_resetGame(){
+		gameCore.resetGame();
+		int[][] board = gameCore.getBoard();
+		int emptyNo = GameUtil.snapshotEmptySpots(board).size();
+		assertEquals(GameUtil.ROWS*GameUtil.COLS-2,emptyNo);
+		assertTrue(gameCore.canMove());
+		assertFalse(gameCore.lose());
+		assertFalse(gameCore.win());
+	}
+	
     }
-}
+
